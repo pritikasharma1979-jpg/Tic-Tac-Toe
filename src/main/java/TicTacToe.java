@@ -2,21 +2,32 @@ package org.example;
 
 public class TicTacToe {
 
+    // Board initialization
+    static char[][] board = {
+            {'-', '-', '-'},
+            {'-', '-', '-'},
+            {'-', '-', '-'}
+    };
+
     public static void main(String[] args) {
 
-        int slot = 7; // test value
-
-        System.out.println("Row: " + getRowFromSlot(slot));
-        System.out.println("Column: " + getColFromSlot(slot));
+        // Test move
+        System.out.println(isValidMove(1, 1)); // true
     }
 
-    // Row calculation
-    static int getRowFromSlot(int slot) {
-        return (slot - 1) / 3;
-    }
+    // UC5: Validate move
+    static boolean isValidMove(int row, int col) {
 
-    // Column calculation
-    static int getColFromSlot(int slot) {
-        return (slot - 1) % 3;
+        // Check boundaries
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            return false;
+        }
+
+        // Check if cell is empty
+        if (board[row][col] != '-') {
+            return false;
+        }
+
+        return true;
     }
 }
